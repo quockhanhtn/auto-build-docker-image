@@ -1,0 +1,33 @@
+name: Build source code on pull request
+'on': pull_request
+
+jobs:
+  build_on_pull_request:
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v2
+
+      - name: 💿 NodeJs set up
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: 🔎 Install dependencies
+        env:
+          CI: false
+          NODE_OPTIONS: '--max-old-space-size=8192'
+          NODE_ENV: 'dev'
+        run: |
+          set -x
+          npm ci
+
+      - name: 🔦 Checking and improve code quality with ESLint
+        run: npm run lint:fix
+
+      - name: 💫 Build source code
+        run: npm run build
+
+      - name: 👀 Display structure of build folder
+        run: ls -R ./build
