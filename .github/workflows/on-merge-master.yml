@@ -30,4 +30,3 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: test-nextjs-qk/app:latest
