@@ -22,7 +22,7 @@
     "@mui/lab": "^5.0.0-alpha.111",
     "@mui/material": "^5.10.11",
     "@mui/styled-engine-sc": "^5.10.6",
-    "@mui/styles": "^5.10.10",
+    "@mui/styles": "^5.11.2",
     "@reduxjs/toolkit": "^1.9.1",
     "change-case": "^4.1.2",
     "date-fns": "^2.29.3",
